@@ -19,72 +19,23 @@ jQuery(document).ready(function($) {
      	firebase.initializeApp(firebaseConfig);
 
      	//Gather necessary page elements
-     	const txtEmail = document.getElementById('txtEmail');
-     	const txtPassword = document.getElementById('txtPassword');
-     	const txtNewPassword = document.getElementById('txtNewPassword');
-     	const btnSignin = document.getElementById('btnSignin');
-     	const btnSignup = document.getElementById('btnSignup');
-     	const btnSignout = document.getElementById('btnSignout');
-     	const btnChangePass = document.getElementById('btnChangePass')
 
 
-if (btnSignup) {
- 		btnSignup.addEventListener('click', e => {
- 			// Get Email and Password
- 			const email = txtEmail.value;
- 			const password = txtPassword.value;
- 			const auth = firebase.auth();
+ 	firebase.auth().onAuthStateChanged(firebaseUser => {
+ 		if (firebaseUser) {
+ 			// NOTE() DEBUG ALERT. REMOVE AFTER TESTING
+ 			//alert("Congrats, you signed in");
+ 			var username = getUsername(firebaseUser);
+ 			console.log(`${firebaseUser ? `- User signed in: ${firebaseUser.email} => ${username}` : "No User Signed in"}`);
 
- 			console.log("We are working over here in signup.js");
+ 		} else {
+ 			console.log("No user signed in");
+ 		}
+ 	});
 
- 			// Sign Up
- 			if (email != null && email != "" && password != null && password != "") {
- 				const promise = auth.createUserWithEmailAndPassword(email,
- 					password);
- 				promise
- 					.then(() => {
- 						console.log("testing...");
- 						addUserToDB(getUsernameByEmail(email));
- 						console.log("success!");
- 						//goodMsg("signup-alert", "Sign-Up Successful!");
- 					})
- 					.catch(e =>
- 						//msg("signup-alert", "nope")
- 						console.log("failed")
- 					);
- 			}
- 			return false;
- 		})
- 	}
- 	//Add functionality to login button
-     	if (btnSignin) {
-     		btnSignin.addEventListener('click', e => {
-     			e.preventDefault();
-     			// Get Email and Password
-     			const email = txtEmail.value;
-     			const password = txtPassword.value;
-     			const auth = firebase.auth();
 
-     			// Sign in
-     			if (email != null && email != "" && password != null && password != "") {
-     				//firebase.auth().signOut();
-     				const promise = auth.signInWithEmailAndPassword(email,
-     					password);
-     				promise
-     					.then(() =>
-     						goodMsg("signin-alert", "Sign-in Successful!")
-     					)
-     					.catch(e =>
-     						//msg("signin-alert", e.message)
-     						console.log("failed")
-     					);
-     			}
-     		});
-     	}
-     	if(btnSignout){
-     	    btnSignout.addEventListener('click', e => {
-     	    signout()
-     	    })}
+
+});
 
 //    function goodMsg(elem, msgTxt) {
 // 		msg(elem, msgTxt);
@@ -105,29 +56,91 @@ if (btnSignup) {
 // 	}
 
  	//Check to see whether the student is logged in or not
- 	firebase.auth().onAuthStateChanged(firebaseUser => {
- 		if (firebaseUser) {
- 			// NOTE() DEBUG ALERT. REMOVE AFTER TESTING
- 			//alert("Congrats, you signed in");
- 			var username = getUsername(firebaseUser);
- 			console.log(`${firebaseUser ? `- User signed in: ${firebaseUser.email} => ${username}` : "No User Signed in"}`);
 
- 		} else {
- 			console.log("No user signed in");
- 		}
- 	});
- });
+     	const txtEmail = document.getElementById('txtEmail');
+     	const txtPassword = document.getElementById('txtPassword');
+     	const txtNewPassword = document.getElementById('txtNewPassword');
+     	const btnSignin = document.getElementById('btnSignin');
+     	const btnSignup = document.getElementById('btnSignup');
+     	const btnSignout = document.getElementById('btnSignout');
+     	const btnChangePass = document.getElementById('btnChangePass')
+
+ btnSignup.addEventListener('click', e => {
+  			// Get Email and Password
+  			const email = txtEmail.value;
+  			const password = txtPassword.value;
+  			const auth = firebase.auth();
+
+  			console.log("We are working over here in signup.js");
+
+  			// Sign Up
+  			if (email != null && email != "" && password != null && password != "") {
+  				firebase.auth().createUserWithEmailAndPassword(email, password)
+  					.then((result) => {
+  						console.log("testing...");
+  						addUserToDB(getUsernameByEmail(email), email);
+  						console.log("success!");
+  						//goodMsg("signup-alert", "Sign-Up Successful!");
+  					})
+  					.catch(e =>
+  						//msg("signup-alert", "nope")
+  						console.log("failed")
+  					);
+  			}
+  			return false;
+  		})
+
+  		 	//Add functionality to login button
+
+//             		btnSignin.addEventListener('click', e => {
+//             			e.preventDefault();
+//             			// Get Email and Password
+//             			const email = txtEmail.value;
+//             			const password = txtPassword.value;
+//             			const auth = firebase.auth();
+//
+//             			// Sign in
+//             			if (email != null && email != "" && password != null && password != "") {
+//             				//firebase.auth().signOut();
+//             				const promise = auth.signInWithEmailAndPassword(email,
+//             					password);
+//             				promise
+//             					.then(() =>
+//             						goodMsg("signin-alert", "Sign-in Successful!")
+//             					)
+//             					.catch(e =>
+//             						//msg("signin-alert", e.message)
+//             						console.log("failed")
+//             					);
+//             			}
+//             		});
+
+             	    btnSignout.addEventListener('click', e => {
+             	    signout()
+             	    });
+
 
  function databaseWriteObject(path, object) {
+    console.log("in write User");
+ 	//console.log(firebase.database().ref(path).val());
  	firebase.database().ref(path).update(object);
+ 	console.log("end write User");
  }
 
+
  function addUserToDB(username) {
- 	var table = `USERS`;
- 	var object = {
- 		username
- 	}
- 	databaseWriteObject(table, object);
+    console.log("in add User");
+//    let userBranch = this.database.ref('USERS');
+// 	userBranch.push(username);
+   var table = `USERS/${username}`;
+   var object = {
+        "USERNAME": `${username}`,
+       // "CART": null,
+        "EMAIL": `${txtEmail.value}`,
+   }
+   console.log(table.val());
+    databaseWriteObject(table, object);
+ 	console.log("end add user");
  }
 function signout() {
  	firebase.auth().signOut();

@@ -22,9 +22,15 @@
 
   <!-- Custom styles for this template -->
   <link href="css/business-casual.min.css" rel="stylesheet">
+  <link href="img/noodle-clipart-macaroni-87687.png" rel="icon">
+
 
   <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-auth.js"></script>
+
+  <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
+<!--  <script src="https://smtpjs.com/v3/smtp.js"></script>-->
 
 </head>
 
@@ -43,19 +49,24 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="about.html">About</a>
-          </li>
           <li class="nav-item active px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="products.html">Products</a>
+            <a class="nav-link text-uppercase text-expanded" href="products.html">Order</a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="store.html">Store</a>
+            <a class="nav-link text-uppercase text-expanded" href="store.html">Contact</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="signUp.html">Sign-Up</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="signUp.html">Signout</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+
+<body style="margin-left: 150px; margin-right: 150px">
 
   <h1 class="site-heading text-center text-white d-none d-lg-block">
     <span class="site-heading-upper text-primary mb-3">Build Your Own Mac & Cheese Bowl</span>
@@ -64,26 +75,21 @@
 
   <section class="page-section">
     <div class="container">
+      <h1 align="right" >CHEESES</h1>
       <div class="product-item">
         <div class="product-item-title d-flex">
           <div class="bg-faded p-5 d-flex ml-auto rounded">
             <h2 class="section-heading mb-0">
-              <span class="section-heading-upper">Cheeses</span>
-              <input type="checkbox" id="c1" name="c1" value="75">
-              <label for="c1">Provalone</label><br>
-              <input type="checkbox" id="c2" name="c2" value="75">
-              <label for="c2">Gorgonazola</label><br>
-              <input type="checkbox" id="c3" name="c3" value="75">
-              <label for="c3">Gouda</label><br>
+              <span class="section-heading-upper"></span>
+              <input type="checkbox" id="c1" name="Provalone" value="75">
+              <label for="c1">Provalone +0.75</label><br>
+              <input type="checkbox" id="c2" name="Gorgonzola" value="75">
+              <label for="c2">Gorgonazola +0.75</label><br>
+              <input type="checkbox" id="c3" name="Gouda" value="75">
+              <label for="c3">Gouda +0.75</label><br>
             </h2>
           </div>
         </div>
-<!--        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/products-01.jpg" alt="">-->
-<!--        <div class="product-item-description d-flex mr-auto">-->
-<!--          <div class="bg-faded p-5 rounded">-->
-<!--            <p class="mb-0">We take pride in our work, and it shows. Every time you order a beverage from us, we guarantee that it will be an experience worth having. Whether it's our world famous Venezuelan Cappuccino, a refreshing iced herbal tea, or something as simple as a cup of speciality sourced black coffee, you will be coming back for more.</p>-->
-<!--          </div>-->
-<!--        </div>-->
       </div>
     </div>
 
@@ -91,91 +97,77 @@
 
   <section class="page-section">
     <div class="container">
+      <h1 align="left" >MEATS</h1>
       <div class="product-item">
         <div class="product-item-title d-flex">
           <div class="bg-faded p-5 d-flex mr-auto rounded">
             <h2 class="section-heading mb-0">
-              <span class="section-heading-upper">Meats</span>
-              <input type="checkbox" id="m1" name="m1" value="100">
-              <label for="m1">Bacon Bits</label><br>
-              <input type="checkbox" id="m2" name="m2" value="100">
-              <label for="m2">Sausage</label><br>
-              <input type="checkbox" id="m3" name="m3" value="200">
-              <label for="m3">Steak</label><br>
-              <input type="checkbox" id="m4" name="m4" value="250">
-              <label for="m4">Lobster</label><br>
+              <span class="section-heading-upper"></span>
+              <input type="checkbox" id="m1" name="Bacon Bits" value="100">
+              <label for="m1">Bacon Bits +1.00</label><br>
+              <input type="checkbox" id="m2" name="Sausage" value="100">
+              <label for="m2">Sausage +1.00</label><br>
+              <input type="checkbox" id="m3" name="Steak" value="200">
+              <label for="m3">Steak +2.00</label><br>
+              <input type="checkbox" id="m4" name="Lobster" value="250">
+              <label for="m4">Lobster +2.50</label><br>
             </h2>
           </div>
         </div>
-<!--        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/products-02.jpg" alt="">-->
-<!--        <div class="product-item-description d-flex ml-auto">-->
-<!--          <div class="bg-faded p-5 rounded">-->
-<!--            <p class="mb-0">Our seasonal menu features delicious snacks, baked goods, and even full meals perfect for breakfast or lunchtime. We source our ingredients from local, oragnic farms whenever possible, alongside premium vendors for specialty goods.</p>-->
-<!--          </div>-->
-<!--        </div>-->
       </div>
     </div>
   </section>
 
   <section class="page-section">
     <div class="container">
+      <h1 align="right" >TOPPINGS</h1>
       <div class="product-item">
         <div class="product-item-title d-flex">
           <div class="bg-faded p-5 d-flex ml-auto rounded">
             <h2 class="section-heading mb-0">
-              <span class="section-heading-upper">Toppings</span>
-              <input type="checkbox" id="t1" name="t1" value="25">
-              <label for="t1">BreadCrumbs</label><br>
-              <input type="checkbox" id="t2" name="t2" value="25">
-              <label for="t2">Mushrooms</label><br>
-              <input type="checkbox" id="t3" name="t3" value="25">
-              <label for="t3">Tomatoes</label><br>
-              <input type="checkbox" id="t4" name="t4" value="25">
-              <label for="t4">Brocolli</label><br>
+              <span class="section-heading-upper"></span>
+              <input type="checkbox" id="t1" name="BreadCrumbs" value="25">
+              <label for="t1">BreadCrumbs +0.25</label><br>
+              <input type="checkbox" id="t2" name="Mushrooms" value="25">
+              <label for="t2">Mushrooms +0.25</label><br>
+              <input type="checkbox" id="t3" name="Tomatoes" value="25">
+              <label for="t3">Tomatoes +0.25</label><br>
+              <input type="checkbox" id="t4" name="Brocolli" value="25">
+              <label for="t4">Brocolli +0.25</label><br>
             </h2>
           </div>
         </div>
-<!--        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/products-03.jpg" alt="">-->
-<!--        <div class="product-item-description d-flex mr-auto">-->
-<!--          <div class="bg-faded p-5 rounded">-->
-<!--            <p class="mb-0">Travelling the world for the very best quality coffee is something take pride in. When you visit us, you'll always find new blends from around the world, mainly from regions in Central and South America. We sell our blends in smaller to large bulk quantities. Please visit us in person for more details.</p>-->
-<!--          </div>-->
-<!--        </div>-->
       </div>
     </div>
   </section>
-<!--  <div id="smart-button-container">-->
-<!--    <div style="text-align: center"><label for="description"> </label><input type="text" name="descriptionInput" id="description" maxlength="127" value=""></div>-->
-<!--    <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>-->
-<!--    <div style="text-align: center"><label for="amount">Total: </label><input name="amountInput" type="number" id="amount" value="" ><span> USD</span></div>-->
-<!--    <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>-->
-<!--    <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="" ></div>-->
-<!--    <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>-->
-<!--    <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>-->
-<!--  </div>-->
-  <script src="https://www.paypal.com/sdk/js?client-id=sb&components=buttons"></script>
-<div id="paypal-button"></div>
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-<script>
-  paypal.Buttons( {
-     createOrder: function(data, actions)  {
-        // Set up the transaction
-        return actions.order.create( {
-          purchase_units: [ {
-            amount:  {
-              value: getTotal()
-             }
-           }]
-         });
-       }
-   }).render('#paypal-button');
-</script>
-<!--  <script src="https://www.paypal.com/sdk/js?client-id=sb" data-sdk-integration-source="button-factory"></script>-->
+  <h2 align="center">What time would you like to pick up your order?</h2>
+  <div align="center">
+  <input type="text" name="time" id="time">
   <input id = "btnSubmitOrder" type="submit" value="Submit Order">
+  <h2> Total: $ <label id="total" value="0.00">4.00</label></h2>
+</div>
+<!--<script type="text/javascript">document.write(getTotal())</script>-->
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&components=buttons"></script>
+  <div id="paypal-button" align="center"></div>
+  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+  <script>
+    paypal.Buttons( {
+       createOrder: function(data, actions)  {
+          // Set up the transaction
+          return actions.order.create( {
+            purchase_units: [ {
+              amount:  {
+                value: getTotal()
+               }
+             }]
+           });
+         }
+     }).render('#paypal-button');
+  </script>
 
   <footer class="footer text-faded text-center py-5">
     <div class="container">
-      <p class="m-0 small">Copyright &copy; Your Website 2020</p>
+      <p class="m-0 small">Copyright &copy; Mac & Make 2020</p>
     </div>
   </footer>
 
@@ -189,40 +181,3 @@
 
 </html>
 
-<!--paypal_sdk.Button.render({-->
-<!--// Configure environment-->
-<!--env: 'sandbox',-->
-<!--client: {-->
-<!--sandbox: 'demo_sandbox_client_id',-->
-<!--production: 'demo_production_client_id'-->
-<!--},-->
-<!--// Customize button (optional)-->
-<!--locale: 'en_US',-->
-<!--style: {-->
-<!--size: 'small',-->
-<!--color: 'gold',-->
-<!--shape: 'pill',-->
-<!--},-->
-
-<!--// Enable Pay Now checkout flow (optional)-->
-<!--commit: true,-->
-
-<!--// Set up a payment-->
-<!--payment: function(data, actions) {-->
-<!--return actions.payment.create({-->
-<!--transactions: [{-->
-<!--amount: {-->
-<!--total: getTotal(),-->
-<!--currency: 'USD'-->
-<!--}-->
-<!--}]-->
-<!--});-->
-<!--},-->
-<!--// Execute the payment-->
-<!--onAuthorize: function(data, actions) {-->
-<!--return actions.payment.execute().then(function() {-->
-<!--// Show a confirmation message to the buyer-->
-<!--window.alert('Thank you for your purchase!');-->
-<!--});-->
-<!--}-->
-<!--}, '#paypal-button');-->

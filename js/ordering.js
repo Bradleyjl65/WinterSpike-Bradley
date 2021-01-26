@@ -1,130 +1,68 @@
-const btnSubmitOrder = document.getElementById('btnSubmitOrder');
+//const btnSubmitOrder = document.getElementById('btnSubmitOrder');
 var total = 400;
+var order = "";
 btnSubmitOrder.addEventListener('click', e => {
-        if(document.getElementById("c1").checked == true)
+        if(document.getElementById("c1").checked == true){
            total = total + parseInt(document.getElementById("c1").value);
-        if(document.getElementById("c2").checked == true)
+           order = order + "\n" + document.getElementById("c1").name;
+        }
+        if(document.getElementById("c2").checked == true){
            total = total + parseInt(document.getElementById("c2").value);
-        if(document.getElementById("c3").checked == true)
+           order = order + "\n" + document.getElementById("c2").name;
+        }
+        if(document.getElementById("c3").checked == true){
            total = total + parseInt(document.getElementById("c3").value);
-        if(document.getElementById("m1").checked == true)
+           order = order + "\n" + document.getElementById("c3").name;
+        }
+        if(document.getElementById("m1").checked == true){
            total = total + parseInt(document.getElementById("m1").value);
-        if(document.getElementById("m2").checked == true)
+           order = order + "\n" + document.getElementById("m1").name;
+        }
+        if(document.getElementById("m2").checked == true){
            total = total + parseInt(document.getElementById("m2").value);
-        if(document.getElementById("m3").checked == true)
+           order = order + "\n" + document.getElementById("m2").name;
+        }
+        if(document.getElementById("m3").checked == true){
            total = total + parseInt(document.getElementById("m3").value);
-        if(document.getElementById("t1").checked == true)
+           order = order + "\n" + document.getElementById("m3").name;
+        }
+        if(document.getElementById("t1").checked == true){
            total = total + parseInt(document.getElementById("t1").value);
-        if(document.getElementById("t2").checked == true)
+           order = order + "\n" + document.getElementById("t1").name;
+        }
+        if(document.getElementById("t2").checked == true){
            total = total + parseInt(document.getElementById("t2").value);
-        if(document.getElementById("t3").checked == true)
+           order = order + "\n" + document.getElementById("t2").name;
+        }
+        if(document.getElementById("t3").checked == true){
            total = total + parseInt(document.getElementById("t3").value);
-        if(document.getElementById("t4").checked == true)
+           order = order + "\n" + document.getElementById("t3").name;
+        }
+        if(document.getElementById("t4").checked == true){
            total = total + parseInt(document.getElementById("t4").value);
+           order = order + "\n" + document.getElementById("t4").name;
+        }
 
         total = total/100;
         console.log(total);
+        document.getElementById("total").innerHTML = total;
+        console.log(order);
+        //Code to send the owner a confirmation email
+//              Email.send({
+//                Host: "smtp.gmail.com",
+//                Username: "jasminebradley2213@gmail.com",
+
+//                To: 'jasminebradley2213@gmail.com',
+//                From: "jasminebradley2213@gmail.com",
+//                Subject: "New Order",
+//                Body: order,
+//              })
+//                .then(function (message) {
+//                  alert("mail sent successfully")
+//                });
 
 });
 
 function getTotal(){
     return total;
 }
-
-
-//  function initPayPalButton() {
-//  var description = document.querySelector('#smart-button-container #description');
-//  var amount = document.querySelector('#smart-button-container #amount');
-//  var descriptionError = document.querySelector('#smart-button-container #descriptionError');
-//  var priceError = document.querySelector('#smart-button-container #priceLabelError');
-//  var invoiceid = document.querySelector('#smart-button-container #invoiceid');
-//  var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
-//  var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
-//
-//  var elArr = [description, amount];
-//
-//  if (invoiceidDiv.firstChild.innerHTML.length > 1) {
-//  invoiceidDiv.style.display = "block";
-//  }
-//
-//  var purchase_units = [];
-//  purchase_units[0] = {};
-//  purchase_units[0].amount = {};
-//
-//  function validate(event) {
-//  return event.value.length > 0;
-//  }
-//
-//  paypal.Buttons({
-//  style: {
-//  color: 'gold',
-//  shape: 'rect',
-//  label: 'pay',
-//  layout: 'horizontal',
-//
-//  },
-//
-//  onInit: function (data, actions) {
-//  actions.disable();
-//
-//  if(invoiceidDiv.style.display === "block") {
-//  elArr.push(invoiceid);
-//  }
-//
-//  elArr.forEach(function (item) {
-//  item.addEventListener('keyup', function (event) {
-//  var result = elArr.every(validate);
-//  if (result) {
-//  actions.enable();
-//  } else {
-//  actions.disable();
-//  }
-//  });
-//  });
-//  },
-//
-//  onClick: function () {
-//  if (description.value.length < 1) {
-//  descriptionError.style.visibility = "visible";
-//  } else {
-//  descriptionError.style.visibility = "hidden";
-//  }
-//
-//  if (amount.value.length < 1) {
-//  priceError.style.visibility = "visible";
-//  } else {
-//  priceError.style.visibility = "hidden";
-//  }
-//
-//  if (invoiceid.value.length < 1 && invoiceidDiv.style.display === "block") {
-//  invoiceidError.style.visibility = "visible";
-//  } else {
-//  invoiceidError.style.visibility = "hidden";
-//  }
-//
-//  purchase_units[0].description = description.value;
-//  purchase_units[0].amount.value = amount.value;
-//
-//  if(invoiceid.value !== '') {
-//  purchase_units[0].invoice_id = invoiceid.value;
-//  }
-//  },
-//
-//  createOrder: function (data, actions) {
-//  return actions.order.create({
-//  purchase_units: purchase_units,
-//  });
-//  },
-//
-//  onApprove: function (data, actions) {
-//  return actions.order.capture().then(function (details) {
-//  alert('Transaction completed by ' + details.payer.name.given_name + '!');
-//  });
-//  },
-//
-//  onError: function (err) {
-//  console.log(err);
-//  }
-//  }).render('#paypal-button-container');
-//  }
-//  initPayPalButton();

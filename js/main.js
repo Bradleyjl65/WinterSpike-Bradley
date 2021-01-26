@@ -23,8 +23,6 @@ jQuery(document).ready(function($) {
 
  	firebase.auth().onAuthStateChanged(firebaseUser => {
  		if (firebaseUser) {
- 			// NOTE() DEBUG ALERT. REMOVE AFTER TESTING
- 			//alert("Congrats, you signed in");
  			var username = getUsername(firebaseUser);
  			console.log(`${firebaseUser ? `- User signed in: ${firebaseUser.email} => ${username}` : "No User Signed in"}`);
 
@@ -37,23 +35,6 @@ jQuery(document).ready(function($) {
 
 });
 
-//    function goodMsg(elem, msgTxt) {
-// 		msg(elem, msgTxt);
-// 		document.getElementById(elem).className = "alert";
-// 		setTimeout(function() {
-// 			window.location.replace("index.html");
-// 		}, 3000);
-// 	}
-
-// 	function msg(elem, msgTxt) {
-//// 	    console.log(msgTxt);
-// 		document.getElementById(elem).innerHTML = msgTxt;
-// 		document.querySelector('.alert').style.display = 'block';
-//
-// 		setTimeout(function() {
-// 			document.querySelector('.alert').style.display = 'none';
-// 		}, 10000);
-// 	}
 
  	//Check to see whether the student is logged in or not
 
@@ -66,58 +47,31 @@ jQuery(document).ready(function($) {
      	const btnChangePass = document.getElementById('btnChangePass')
 
  btnSignup.addEventListener('click', e => {
-  			// Get Email and Password
-  			const email = txtEmail.value;
-  			const password = txtPassword.value;
-  			const auth = firebase.auth();
+    // Get Email and Password
+    const email = txtEmail.value;
+    const password = txtPassword.value;
+    const auth = firebase.auth();
 
-  			console.log("We are working over here in signup.js");
+    console.log("We are working over here in signup.js");
 
-  			// Sign Up
-  			if (email != null && email != "" && password != null && password != "") {
-  				firebase.auth().createUserWithEmailAndPassword(email, password)
-  					.then((result) => {
-  						console.log("testing...");
-  						addUserToDB(getUsernameByEmail(email), email);
-  						console.log("success!");
-  						//goodMsg("signup-alert", "Sign-Up Successful!");
-  					})
-  					.catch(e =>
-  						//msg("signup-alert", "nope")
-  						console.log("failed")
-  					);
-  			}
-  			return false;
-  		})
+    // Sign Up
+    if (email != null && email != "" && password != null && password != "") {
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((result) => {
+                console.log("testing...");
+                addUserToDB(getUsernameByEmail(email), email);
+                console.log("success!");
+            })
+            .catch(e =>
+                console.log("failed")
+            );
+    }
+    return false;
+ })
 
-  		 	//Add functionality to login button
-
-//             		btnSignin.addEventListener('click', e => {
-//             			e.preventDefault();
-//             			// Get Email and Password
-//             			const email = txtEmail.value;
-//             			const password = txtPassword.value;
-//             			const auth = firebase.auth();
-//
-//             			// Sign in
-//             			if (email != null && email != "" && password != null && password != "") {
-//             				//firebase.auth().signOut();
-//             				const promise = auth.signInWithEmailAndPassword(email,
-//             					password);
-//             				promise
-//             					.then(() =>
-//             						goodMsg("signin-alert", "Sign-in Successful!")
-//             					)
-//             					.catch(e =>
-//             						//msg("signin-alert", e.message)
-//             						console.log("failed")
-//             					);
-//             			}
-//             		});
-
-             	    btnSignout.addEventListener('click', e => {
-             	    signout()
-             	    });
+btnSignout.addEventListener('click', e => {
+signout()
+});
 
 
  function databaseWriteObject(path, object) {
@@ -159,20 +113,6 @@ function signout() {
  	user.on('value', snap => {
  		var userData = snap.val() //JSON.stringify(snap.val(), null, 3);
  		if (userData) {
- 			/*console.log('- User retrieved:');
- 			console.log('  - User\'s Favorites:')
- 			for (var i in userData.FAVORITES) {
- 				var fav = userData.FAVORITES[i];
- 				console.log(`    -Favorite ${i}: ${fav}`);
- 			}
- 			/*for (var i in userData) {
- 				var datum = userData[i];
- 				console.log(`${datum}`);
- 			}
- 		} else {
- 			console.log('- no user found.');
- 		}
-		*/
  			return userData;
  		} else {
  			return "";

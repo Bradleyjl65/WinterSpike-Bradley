@@ -28,7 +28,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-auth.js"></script>
 
-  <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 
 <!--  <script src="https://smtpjs.com/v3/smtp.js"></script>-->
 
@@ -142,9 +142,9 @@
   </section>
   <h2 align="center">What time would you like to pick up your order?</h2>
   <div align="center">
-  <input type="text" name="time" id="time">
-  <input id = "btnSubmitOrder" type="submit" value="Submit Order">
-  <h2> Total: $ <label id="total" value="0.00">4.00</label></h2>
+  <input type="text" name="time" id="time" maxlength="5">
+  <input id="btnSubmitOrder" type="submit" value="Submit Order">
+  <h2> Total: $ <label id="total">4.00</label></h2>
 </div>
 <!--<script type="text/javascript">document.write(getTotal())</script>-->
   <script src="https://www.paypal.com/sdk/js?client-id=sb&components=buttons"></script>

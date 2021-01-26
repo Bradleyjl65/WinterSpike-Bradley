@@ -37,11 +37,11 @@
         message: 'helloo'
       };
       emailjs.send('service_0plisf3', 'template_lh5bu72', templateParams)
-    .then(function(response) {
-       console.log('SUCCESS!', response.status, response.text);
-    }, function(error) {
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+       }, function(error) {
        console.log('FAILED...', error);
-    });
+      });
     </script>
 
   </head>
@@ -55,7 +55,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
       <div class="container">
-        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Start Bootstrap</a>
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Mac & Make</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -86,15 +86,22 @@
     <section class="page-section cta">
       <div class="container">
         <form id="contact-form">
-          <input type="hidden" name="contact_number">
-          <label>Name</label>
-          <input type="text" name="user_name">
-          <label>Email</label>
-          <input type="email" name="user_email">
-          <label>Message</label>
-          <textarea name="message"></textarea>
-          <input type="submit" value="Send">
+          <div align="center">
+            <input type="hidden" name="contact_number">
+            <label>Name</label>
+            <input type="text" name="user_name">
+            <label>Email</label>
+            <input type="email" name="user_email">
+          </div>
+          <div align="center">
+            <label>Message</label>
+            <textarea name="message" rows="15" cols="60"></textarea>
+          </div>
+          <div align="center">
+            <input type="submit" value="Send">
+          </div>
         </form>
+        <br><br>
         <div class="row">
           <div class="col-xl-9 mx-auto">
             <div class="cta-inner text-center rounded">
@@ -129,7 +136,7 @@
                 </li>
                 <li class="list-unstyled-item list-hours-item d-flex">
                   Saturday
-                  <span class="ml-auto">9:00 AM to 5:00 PM</span>
+                  <span class="ml-auto">7:00 AM to 5:00 PM</span>
                 </li>
               </ul>
               <p class="address mb-5">
